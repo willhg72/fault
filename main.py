@@ -5,10 +5,9 @@ from routers import distances
 
 #cargamos las variables de ambiente 
 load_dotenv()
-API_URL = os.environ["API_URL"]
 #print(API_URL)
 
-#instanciarmos la app
+#instance la app
 app = FastAPI()
 
 #creamos el router para escalabilidad

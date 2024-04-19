@@ -1,5 +1,6 @@
-
+import re
 import os
+from  fastapi import status, HTTPException
 from typing import List
 from geopy.distance import geodesic
 import requests
@@ -10,7 +11,7 @@ DATA_URL = os.environ["API_URL"]
 
 def calculate_distances(coordenates):
     '''
-    This function receive an specific coordinates and calculate the distance each 10 more close fails , then return a list of 10 more close fails sorted ASC by distancia_promedio.
+    This function receive a specific coordinate(lat, long) and calculate the distance of 10 more close fails from this point , then return a list sorted by distancia_promedio ASC
     '''
     total_info_fails_row_data = get_fails_row_data(DATA_URL)
     cleaned_info_fails_row_data = clean_fails_row_data(
@@ -58,11 +59,18 @@ def clean_fails_row_data(total_info_fails_row_data) -> list:
     return cleaned_info_fails_row_data
 
 
-def calculated_and_sorted_data(cleaned_info_fails_row_data, coordenates: List[float]) -> dict:
+def calculated_and_sorted_data(cleaned_info_fails_row_data: list[dict], coordenates: List[float]) -> dict:
     '''
     This function receive the cleaned data and an specific coordinates and calculate the distance each 10 more close fails , then return a list of 10 more close fails sorted ASC by distancia_promedio.
     '''
     
+    pattern = r'/^[-]?\d+[\.]?\d*, [-]?\d+[\.]?\d*$/'
+    if re.match(pattern, str(coordenates[0])) and re.match(pattern, str(coordenates[1])):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid coordinates, must be in the [-90; 90] range and Longitude must be in the [-180; 180] range")
+    if  coordenates[0] <= -90 or coordenates[0] >= 90:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid latitude")
+    if coordenates[1] <= -180 or coordenates[1] >= 180:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid longitude")
     
     for key, value in cleaned_info_fails_row_data.items():
         cleaned_info_fails_row_data[key]["distancia_incio_falla"] = geodesic(
