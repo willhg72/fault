@@ -4,16 +4,14 @@ from  fastapi import status, HTTPException
 from typing import List
 from geopy.distance import geodesic
 import requests
-
-DATA_URL = os.environ["API_URL"]
-
-    
+from settings import API_URL
+  
 
 def calculate_distances(coordenates):
     '''
     This function receive a specific coordinate(lat, long) and calculate the distance of 10 more close fails from this point , then return a list sorted by distancia_promedio ASC
     '''
-    total_info_fails_row_data = get_fails_row_data(DATA_URL)
+    total_info_fails_row_data = get_fails_row_data(API_URL)
     cleaned_info_fails_row_data = clean_fails_row_data(
         total_info_fails_row_data)
    
