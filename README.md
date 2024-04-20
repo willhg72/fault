@@ -68,7 +68,7 @@ Docker container activation:
 
 #### coordenates(latitude, longitude)
 
-### It takes latitude and longitude coordinates and returns the distance, in kilometers, to the 10 closest tectonic faults.
+### It takes latitude and longitude coordenates and returns the distance, in kilometers, to the 10 closest tectonic faults.
 
 ```http
 {
