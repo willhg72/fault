@@ -25,15 +25,15 @@ I've developed a REST API hosted on GitHub that serves as a tool for accessing i
 
 * Activate a terminal inside VSCode.
 
-* Create a virtual environment:
+* Makes sure pip is updated:
 ```bash
-  python3 -m venv venv
+  python -m pip install --upgrade pip
 ```
 
-* Install my-project with pip3:
+* Install the modules needed with pip:
 
 ```bash
-  pip3 install -r requirements.txt
+  pip install -r requirements.txt
 ```
  Create Docker image:
   ```bash
