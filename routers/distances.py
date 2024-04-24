@@ -10,6 +10,6 @@ router = APIRouter(
 )
 
 @router.get('/', status_code=status.HTTP_200_OK)
-async def calculate_distances(coordenates_lat: float,  coordenates_long: float):
-    coordenates: List[float] = [coordenates_lat, coordenates_long]
-    return distances.calculate_distances(coordenates)
+async def calculate_distances(latitude: float,  longitude: float):
+    coordinates: List[float] = [latitude, longitude]
+    return distances.calculate_distances(coordinates)

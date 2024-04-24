@@ -53,11 +53,11 @@ Docker container activation:
 #### Get Tectonic faults:
 
 ```http
-  GET [<server address>]/distances?coordenates_lat=[Valid latitude]&coordenates_long=[valid longitude]
+  GET [<server address>]/distances?coordinates_lat=[Valid latitude]&coordinates_long=[valid longitude]
 ```
 * Example API on Local Server:
 ```http
-   http://localhost/distances?coordenates_lat=7.928234263111178&coordenates_long=-72.50830172354611
+   http://localhost/distances?coordinates_lat=7.928234263111178&coordinates_long=-72.50830172354611
 ```
 
 | Parameter | Type     | Description                |
@@ -66,9 +66,9 @@ Docker container activation:
 | `longitude` | `float` | **Required**. valid range(>-180 and < 180)  |
 
 
-#### coordenates(latitude, longitude)
+#### coordinates(latitude, longitude)
 
-### It takes latitude and longitude coordenates and returns the distance, in kilometers, to the 10 closest tectonic faults.
+### It takes latitude and longitude coordinates and returns the distance, in kilometers, to the 10 closest tectonic faults.
 
 ```http
 {

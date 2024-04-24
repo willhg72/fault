@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 
-class Coordenates(BaseModel):
+class coordinates(BaseModel):
     latitude: float
     longitude: float
     
