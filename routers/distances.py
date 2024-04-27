@@ -1,6 +1,5 @@
 from fastapi import APIRouter, status, Depends
 from repositories import distances
-import schemas
 from services import util_functions
 from typing import List
 
